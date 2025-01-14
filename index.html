@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+    <title>Welcome!</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name='viewport' content='width=device-width'/>
+
+    <link rel="stylesheet" href="styles/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
   </head>
+
   <body>
-    
+    <script>window.onresize = function(){ location.reload(); }</script>
+    <div id="pageContainer">
+      <canvas id="threeBG"></canvas>
+      <div id="contentArea">
+
+        <section>
+          <div id="textContainer">
+            <h1>Welcome!</h1>
+            <p>Hello, and welcome to Chestnut Bread! The personal website of AdoApplescider.</p>
+            <p style="color: rgb(255, 153, 0)"><b>Construction notice:</b> Construction is fully underway! Put on your hardhat and watch for falling debris!</p>
+            <p style="color: rgb(224, 15, 15);"><b>Accessibility note:</b> This website features a lot of motion effects. If you have any issues with visual stimuli such as nausua or epilepsy, please know that this site may trigger a response!</p>
+          </div>
+        </section>
+        <div id="buttonHolder">
+          <a href="https://neocities.org/"><img src="images/blinkiesnSuch/neocities-alpha.gif" alt="(Made with Neocities)"></a>
+          <img src="images/blinkiesnSuch/best viewed.jpg" alt="(Based 1920x1080)">
+          <img src="images/blinkiesnSuch/cobradile_twopaws.png" alt="(Made with my own two paws)">
+        </div>
+        <div id="leftContainer">
+          <a href="https://www.mabsland.com/Adoption.html"><img src="https://www.mabsland.com/Pandas/Censor_NYRb.gif" style="height: 100%; width: 100%;" alt="Site not yet rated."></a>
+        </div>
+        <div id="rightContainer">
+          <a href="https://www.mabsland.com/Adoption.html"><img src="https://www.mabsland.com/Pandas/Censor_NYRb.gif" style="height: 100%; width: 100%;" alt="Site not yet rated."></a>
+        </div>
+        <div id="CDwrapper" onclick="pageTransition();">
+          <div id="CDbase"></div>
+          <div id="CDshine"></div>
+          <div id="CDreflect"></div>
+          <div id="CDcover"></div>
+        </div>
+
+        <div id="whiteBG"></div>
+      </div>
+    </div>
+
+    <script src="javascript/index.js"></script>
   </body>
 </html>
