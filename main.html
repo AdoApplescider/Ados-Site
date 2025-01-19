@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chestnut Bread!</title>
+
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="https://melonking.net/scripts/frame-link.js"></script>
+    </head>
+    <body>
+
+        <div id="sideBar">
+            <div id="menuBlock">
+
+            </div>
+
+            <div id="buttBar">
+                <div class="buttWrap"><button onclick="menu()" class="menu"><div class="tooltip">Menu</div></button></div>
+                <div class="buttWrap"><button onclick="swapPage('home.html', 'darkslateblue', 'rgb(50, 35, 107)')" class="home"><div class="tooltip">Home</div></button></div>
+                <div class="buttWrap"><button><div class="tooltip">???</div></button></div>
+                <div class="buttWrap"><button onclick="swapPage('links.html', 'limegreen', 'green')"><div class="tooltip">???</div></button></div>
+                <div class="buttWrap"><button><div class="tooltip">???</div></button></div>
+            </div>
+        </div>
+
+        <div id="frameContainer">
+            <div id="secondWave"></div>
+            <div id="mainWave"></div>
+            <iframe src="home.html" id="mainframe" title="mainframe"></iframe>
+        </div>
+
+        <script src="javascript/main.js"></script>
+    </body>
+</html>

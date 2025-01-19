@@ -1,0 +1,255 @@
+@font-face {
+    font-family: child;
+    src: url("fonts/ChildosFREEPERSONALUSE-Bold.otf");
+    size-adjust: 100%;
+} /*Make it a local file path*/
+
+:root {
+    --bgColor: darkslateblue; /*Allows javascript to change the page's color pallete*/
+    --secondaryColor: rgb(50, 35, 107);
+    --colorTransition: 0.5s ease; /*Keep transition consistent between ui elements*/
+
+    --buttBarWidth: 5rem;
+    --menuWidth: 22rem; /*To keep the proportions consistent*/
+    --debugBorder: none; /*black dotted 0.1rem to show wrappers*/
+}
+
+body {
+    background-color: var(--bgColor);
+
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+
+    transition: background-color var(--colorTransition);
+}
+
+iframe {
+    border-radius: 2rem;
+    border: var(--secondaryColor);
+    border-style: solid;
+    border-width: 0.2rem;
+
+    position: absolute;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
+    z-index: -99;
+}
+#frameContainer { /*Iframe does not change size, this one does. Allows effects to be overlayed on iframe and constrain edges*/
+    border-radius: 2rem;
+
+    overflow: hidden;
+    position: fixed;
+    top: 0.3rem;
+    bottom: 0.3rem;
+    left: 0.3rem;
+    right: 0.3rem;
+
+    transition: left 0.4s linear, borderRadius 0.4s linear, border-color var(--colorTransition);
+}
+.growTransition { /*intro*/
+    animation: growTransition 1 1.5s ease-in-out forwards;
+}
+.shrinkTransition { /*outro*/
+    animation: shrinkTransition 1 1.5s ease-in-out forwards;
+}
+@keyframes shrinkTransition {
+    0% {
+        clip-path: circle(100% at 50% 50%);
+    }
+    100% {
+        clip-path: circle(0% at 50% 50%);
+    }
+}
+@keyframes growTransition {
+    0% {
+        clip-path: circle(0% at 50% 50%);
+    }
+    100% {
+        clip-path: circle(100% at 50% 50%);
+    }
+}
+
+#sideBar { /*Container of the full sidebar including the expandable section*/
+    border: var(--debugBorder);
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * (var(--menuWidth) + (var(--buttBarWidth)/2))); /*Basic state of this div is obscuring half of the buttons*/
+    width: fit-content;
+    z-index: 99;
+
+    transition: left ease 0.6s;
+}
+#menuBlock { /*Container for menu items*/
+    border: var(--debugBorder);
+    background-color: brown;
+
+    position: relative;
+    display: inline-block;
+    height: 100vh;
+    width: var(--menuWidth);
+}
+#buttBar { /*Flexbox container of buttons*/
+    border: var(--debugBorder);
+    
+    position: absolute;
+    overflow: visible;
+    top: 0;
+    bottom: 0;
+    width: var(--buttBarWidth);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttWrap {
+    filter: saturate(0%);
+
+    height: 3rem;
+    width: 3rem;
+
+    transition: width 0.2s ease, height 0.4s ease;
+}
+.buttWrap:hover {
+    filter: saturate(100%);
+
+    height: 4rem;
+    width: 4rem;
+}
+.buttWrap:active {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+button {
+    border-radius: 1rem;
+    border-color: white;
+    box-shadow: 0.5rem 0.5rem 0 rgba(21, 13, 59, 0.726);
+    color: white;
+
+    width: 100%;
+    height: 100%;
+
+    transition: 0.4s border-radius ease-in-out, box-shadow 0.4s ease, background-color 0.2s, filter 0.3s ease-in-out;
+}
+button:hover {
+    cursor: pointer;
+
+    animation: squish 1.5s infinite ease-in-out;
+}
+button:active {
+    box-shadow: 0.3rem 0.3rem 0rem rgba(21, 13, 59, 0.726);
+}
+.tooltip {
+    align-items: center;
+    margin-top: 100%;
+    padding-top: 30%;
+    color: inherit;
+    font-family: child;
+    font-size: 1.5em;
+    -webkit-text-stroke-width: 0.1em;
+    -webkit-text-stroke-color: black;
+    /*filter: drop-shadow(0.3rem 0.3rem 0 rgba(21, 13, 59, 0.726));*/
+    opacity: 0%;
+    transition: 0.3s opacity linear;
+}
+.menu:hover {
+    background-color: red;
+    border-color: red;
+}
+.home:hover {
+    background-color: yellow;
+    border-color: yellow;
+}
+.wobble {
+    animation: wobble 5s infinite ease-in-out;
+}
+.bounce {
+    animation: buttBounce 1.5s ease-in-out forwards;
+}
+@keyframes wobble {
+    0% {
+        rotate: -5deg;
+    }
+    50% {
+        rotate: 5deg;
+    }
+    100% {
+        rotate: -5deg;
+    }
+}
+@keyframes squish {
+    0% {
+        transform: scaleX(105%) scaleY(1);
+    }
+    50% {
+        transform: scaleX(1) scaleY(105%);
+    }
+    100% {
+        transform: scaleX(105%) scaleY(1);
+    }
+}
+@keyframes buttBounce {
+    0% {
+        opacity: 0;
+        margin-left: -20rem;
+        transform: scaleX(1.3) scaleY(0.3);
+    }
+    50% {
+        opacity: 1;
+        margin-left: 20rem;
+        transform: scaleX(0.3) scaleY(1.3);
+    }
+    80% {
+        margin-left: -0.5rem;
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+        transform: none;
+    }
+}
+
+#mainWave {
+    background-color: var(--bgColor);
+
+    position: absolute;
+    width: 0;
+    height: 200%;
+    z-index: 3;
+
+    --mask:
+    	radial-gradient(4.47rem at calc(100% - 6rem) 50%,#000 99%,#0000 101%) 0 calc(50% - 4rem)/100% 8rem,
+    	radial-gradient(4.47rem at calc(100% + 4rem) 50%,#0000 99%,#000 101%) calc(100% - 2rem) 50%/100% 8rem repeat-y;
+  		-webkit-mask: var(--mask);
+        mask: var(--mask);
+
+    animation: scroll 3s linear infinite;
+    transition: width ease-in-out 0.6s, background-color var(--colorTransition);
+}
+#secondWave {
+    background-color: var(--secondaryColor);
+
+    position: absolute;
+    width: 0;
+    height: 200%;
+    z-index: 2;
+
+    --mask:
+    	radial-gradient(4.47rem at calc(100% - 6rem) 50%,#000 99%,#0000 101%) 0 calc(50% - 4rem)/100% 8rem,
+    	radial-gradient(4.47rem at calc(100% + 4rem) 50%,#0000 99%,#000 101%) calc(100% - 2rem) 50%/100% 8rem repeat-y;
+  		-webkit-mask: var(--mask);
+        mask: var(--mask);
+
+    animation: scroll 7s linear reverse infinite;
+    transition: width ease-in-out 0.79s, background-color var(--colorTransition);
+}
+@keyframes scroll {
+    0% {
+        transform: translateY(-8rem); /*start at negative double the wave length*/
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}

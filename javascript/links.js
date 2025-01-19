@@ -29,8 +29,8 @@ var scene = new THREE.Scene(); //Three.js background
             var distFromTargetX = targetX - camera.rotation.x;
             var distFromTargetY = targetY - camera.rotation.y;
         
-            motionRateX = motionRateX * 0.8 + distFromTargetX * 0.003; // damping
-            motionRateY = motionRateY * 0.8 + distFromTargetY * 0.003; // damping
+            motionRateX = motionRateX * 0.7 + distFromTargetX * 0.003; // damping
+            motionRateY = motionRateY * 0.7 + distFromTargetY * 0.003; // damping
         
             camera.rotation.x += motionRateX;
             camera.rotation.y += motionRateY;
@@ -39,7 +39,7 @@ var scene = new THREE.Scene(); //Three.js background
         };
         
         //Mouse movement 
-        var mouseTolerance = 0.0002;
+        var mouseTolerance = 0.0003;
         var targetX = 0;
         var targetY = 0;
         var motionRateX = 0;
@@ -54,16 +54,3 @@ var scene = new THREE.Scene(); //Three.js background
         };
         
         render();
-
-document.getElementById("contentArea").classList.add("contentIntro");
-
-function pageTransition(link) {
-    document.getElementById("CDwrapper").classList.add("CDoutro");
-    document.getElementById("contentArea").classList.remove("contentIntro");
-    document.getElementById("contentArea").classList.add("fadeOut");
-    document.getElementById("pageContainer").classList.add("contentOutro");
-    document.getElementById("threeBG").classList.add("contentOutro");
-    setTimeout(function () {
-        window.location.href = link; //Redirects to main page
-    }, 7000); //Make sure that this delay allows the animation to complete before the page changes
-}

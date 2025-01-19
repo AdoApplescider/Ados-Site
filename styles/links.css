@@ -1,0 +1,65 @@
+:root {
+    --borderColor: darkslateblue;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: skyblue;
+}
+
+canvas {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -99;
+}
+
+#topBar {
+    background-color: var(--borderColor);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+}
+#topFin {
+    background-color: var(--borderColor);
+    border-radius: 1rem;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: -10%;
+    height: 150%;
+
+    transform: skew(50deg, 0deg);
+    transform-origin: top;
+}
+
+#bottomBar {
+    background-color: var(--borderColor);
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+}
+#bottomFin {
+    background-color: var(--borderColor);
+    border-radius: 1rem;
+
+    position: absolute;
+    bottom: -10%;
+    left: 0;
+    right: 50%;
+    height: 150%;
+
+    transform: skew(50deg, 0deg);
+    transform-origin: bottom;
+}
